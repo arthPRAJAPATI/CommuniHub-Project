@@ -9,9 +9,15 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 
 // connecting the db
-// mongoose.connect('mongodb://127.0.0.1:27017/'); 
+mongoose.connect('mongodb://127.0.0.1:27017/CommuniHubData');
 
 // creating db model:
+const Community = mongoose.model('Community', {
+    name: String,
+    location: String,
+    description: String,
+    guideline: String
+})
 
 
 // Creating an instance of the Express application
@@ -26,13 +32,53 @@ myApp.use(express.urlencoded({ extended: false }));
 myApp.set('views', path.join(__dirname, 'views'));
 myApp.set('view engine', 'ejs');
 
+myApp.use(
+    "/css",
+    express.static(path.join(__dirname, "node_modules/bootstrap/dist/css"))
+)
+myApp.use(
+    "/js",
+    express.static(path.join(__dirname, "node_modules/bootstrap/dist/js"))
+)
+myApp.use("/js", express.static(path.join(__dirname, "node_modules/jquery/dist")))
+
+
 
 // Serving static files from the 'public' directory
 myApp.use(express.static(__dirname + '/public'));
 
 //Home route
 myApp.get('/', function (req, res) {
-    res.send('hello');
+    res.render('home');
+});
+
+myApp.get('/login', function (req, res) {
+    res.render('login');
+});
+
+myApp.get('/userSignup', function (req, res) {
+    res.render('userSignup');
+});
+
+myApp.get('/communitySignup', function (req, res) {
+    res.render('communitySignup');
+});
+
+
+myApp.post('/', function (req, res) {
+    var Communitydata = {
+        name: req.body.name,
+        location: req.body.location,
+        description: req.body, description,
+        guideline: req.body.guideline
+    };
+
+    let community = new Community(Communitydata);
+
+    community.save();
+
+    res.render('index');
+
 });
 
 // Starting the server on port 8080

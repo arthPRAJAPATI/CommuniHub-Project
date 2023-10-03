@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Sign Up</title>
+    <!-- Link to Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <style>
+        /* Custom styles here */
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .signup-form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn-signup {
+            background-color: #00a855;
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+        .btn-signup:hover {
+            background-color: #007437;
+        }
+        .checkbox-group {
+            margin-top: 20px;
+        }
+        .checkbox-group label {
+            font-weight: normal;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="signup-form">
+                    <h2 class="text-center">Community Sign Up</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="communityName">Community Name</label>
+                            <input type="text" class="form-control" id="communityName" placeholder="Enter community name">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" class="form-control" id="location" placeholder="Enter location">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description" rows="4" placeholder="Enter community description"></textarea>
+                        </div>
+                         <div class="form-group">
+                            <label for="guidelines">Community Guidelines</label>
+                            <textarea class="form-control" id="guidelines" rows="4" readonly>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo ac ex auctor ultricies.
+                                Nulla facilisi. Nulla congue purus ut mauris interdum, a varius felis tristique.
+                                Fusce non tortor vitae erat hendrerit luctus in non lectus.
+                            </textarea>
+                        </div>
+                        <div class="checkbox-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="agreeCheckbox">
+                                <label class="form-check-label" for="agreeCheckbox">
+                                    I agree to the community guidelines
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-signup btn-block">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (jQuery and Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>

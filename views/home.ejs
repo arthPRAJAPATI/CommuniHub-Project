@@ -1,0 +1,116 @@
+<%- include('shared/header'); -%>
+    <!-- Custom CSS -->
+    <style>
+      /* Custom styles here */
+body {
+    background-color: #f0f0f0;
+}
+.navbar {
+    background-color: #00a855; /* Green theme color */
+    display: flex;
+    justify-content: space-between; /* Positions content at both ends */
+}
+.navbar-brand, .navbar-nav .nav-link {
+    color: #ffffff; /* White text color */
+    transition: color 0.3s ease; /* Transition for color change */
+}
+.navbar-nav .nav-link:hover {
+    color: #007437; /* Color change on hover */
+}
+.navbar-nav .nav-link:active,
+.navbar-nav .nav-link:focus {
+    color: #005026; /* Color change on click */
+}
+.navbar-collapse {
+    flex-grow: 0; /* Prevents the collapse of the navbar content */
+}
+.navbar-toggler {
+    order: -1; /* Move the toggler to the left end */
+}
+.navbar-buttons {
+    display: flex;
+    gap: 10px; /* Adjust the gap between buttons */
+}
+/* Custom CSS for hover dropdown */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+.navbar-buttons .nav-link {
+    color: #ffffff; /* White text color for buttons */
+    transition: color 0.3s ease; /* Transition for color change */
+}
+.navbar-buttons .nav-link:hover {
+    color: #007437; /* Color change on hover for buttons */
+}
+.navbar-buttons .nav-link:active,
+.navbar-buttons .nav-link:focus {
+    color: #005026; /* Color change on click for buttons */
+}
+.jumbotron {
+    background-color: #ffffff;
+    margin-top: 20px;
+    padding: 20px;
+}
+.footer {
+    background-color: #00a855; /* Green theme color */
+    color: #ffffff; /* White text color */
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">CommuniHub</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Signup and Login Buttons -->
+            <div class="navbar-buttons">
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="signupDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Signup
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="signupDropdown">
+                        <a class="dropdown-item" href="/userSignup">Sign Up as User</a>
+                        <a class="dropdown-item" href="/communitySignup">Sign Up as Community</a>
+                    </div>
+                </div>
+                <a class="nav-link" href="/login">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Welcome to CommuniHub</h1>
+            <p>Your hub for seamless communication.</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </div>
+    </div>
+
+
+    <%- include('shared/footer'); -%>
+
