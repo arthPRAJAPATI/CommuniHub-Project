@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  
+  <style>
+    /* Custom CSS */
+    body {
+      background-color: #f2f2f2;
+      color: #333;
+    }
+
+    h1 {
+      color: #008000;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .btn-primary {
+      background-color: #008000;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #006400;
+    }
+
+    .navbar {
+    background-color: #00a855; /* Green theme color */
+    display: flex;
+    justify-content: space-between; /* Positions content at both ends */
+}
+.navbar-brand, .navbar-nav .nav-link {
+    color: #ffffff; /* White text color */
+    transition: color 0.3s ease; /* Transition for color change */
+}
+.navbar-nav .nav-link:hover {
+    color: #007437; /* Color change on hover */
+}
+.navbar-nav .nav-link:active,
+.navbar-nav .nav-link:focus {
+    color: #005026; /* Color change on click */
+}
+.navbar-collapse {
+    flex-grow: 0; /* Prevents the collapse of the navbar content */
+}
+.navbar-toggler {
+    order: -1; /* Move the toggler to the left end */
+}
+.navbar-buttons {
+    display: flex;
+    gap: 10px; /* Adjust the gap between buttons */
+}
+/* Custom CSS for hover dropdown */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+.navbar-buttons .nav-link {
+    color: #ffffff; /* White text color for buttons */
+    transition: color 0.3s ease; /* Transition for color change */
+}
+.navbar-buttons .nav-link:hover {
+    color: #007437; /* Color change on hover for buttons */
+}
+.navbar-buttons .nav-link:active,
+.navbar-buttons .nav-link:focus {
+    color: #005026; /* Color change on click for buttons */
+}
+.jumbotron {
+    background-color: #ffffff;
+    margin-top: 20px;
+    padding: 20px;
+}
+.footer {
+    background-color: #00a855; /* Green theme color */
+    color: #ffffff; /* White text color */
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+  </style>
+  
+  <title>About CommuniHub</title>
+</head>
+<body>
+
+ <%- include('shared/navbar'); -%>
+
+  <!-- Hero Section -->
+    <div class="jumbotron">
+  <div class="container">
+    <h1>About CommuniHub</h1>
+    
+    <p>
+      CommuniHub is a community-focused platform aimed at fostering connections, collaboration, and engagement within local neighborhoods and communities. Our goal is to provide a centralized hub where community members can come together, share information, and participate in various activities.
+    </p>
+    
+    <p>
+      Our platform offers dedicated forums where residents can discuss local topics, share insights, ask questions, and provide recommendations. These forums serve as a virtual meeting place for community members to connect and engage in meaningful conversations.
+    </p>
+    
+    <p>
+      In addition, CommuniHub allows users to create and discover local events such as community gatherings, workshops, fundraisers, or sports activities. You can easily RSVP, view event details, and stay informed about what's happening in your neighborhood.
+    </p>
+    
+    <p>
+      We also promote community involvement by providing a platform where users can find volunteer opportunities within their locality. Organizations and individuals can post volunteer initiatives, and interested community members can sign up to contribute their time and skills.
+    </p>
+    
+    <p>
+      Our comprehensive local business directory makes it easier for community members to support and connect with local entrepreneurs. Businesses can create profiles, share information about their products or services, and engage with potential customers.
+    </p>
+    
+    <p>
+      CommuniHub is designed to strengthen community bonds, promote local engagement, and create a sense of belonging. By providing a platform that facilitates communication and collaboration, we empower community members to actively participate in shaping their neighborhoods and fostering a vibrant local culture.
+    </p>
+    
+    <div class="text-center">
+      <a href="contact.html" class="btn btn-primary">Contact Us</a>
+    </div>
+  </div>
+  </div>
+
+      <%- include('shared/footer'); -%>

@@ -63,45 +63,7 @@ body {
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="#">CommuniHub</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- Signup and Login Buttons -->
-            <div class="navbar-buttons">
-                <div class="dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" id="signupDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Signup
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="signupDropdown">
-                        <a class="dropdown-item" href="/userSignup">Sign Up as User</a>
-                        <a class="dropdown-item" href="/communitySignup">Sign Up as Community</a>
-                    </div>
-                </div>
-                <a class="nav-link" href="/login">Login</a>
-            </div>
-        </div>
-    </nav>
-
+  <%- include('shared/navbar'); -%>
     <!-- Hero Section -->
     <div class="jumbotron">
         <div class="container">
