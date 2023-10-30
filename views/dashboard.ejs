@@ -1,0 +1,142 @@
+<%- include('shared/header'); -%>
+    <style>
+        /* Define the theme color */
+        :root {
+            --theme-color: #00a855;
+        }
+
+        /* Custom CSS for styling */
+        body {
+            background-color: #f0f0f0; /* Set a light background color */
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #00a855; /* Green theme color */
+            display: flex;
+            justify-content: space-between; /* Positions content at both ends */
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #ffffff; /* White text color */
+            transition: color 0.3s ease; /* Transition for color change */
+        }
+        .navbar-nav .nav-link:hover {
+            color: #007437; /* Color change on hover */
+        }
+        .navbar-nav .nav-link:active,
+        .navbar-nav .nav-link:focus {
+            color: #005026; /* Color change on click */
+        }
+        .navbar-collapse {
+            flex-grow: 0; /* Prevents the collapse of the navbar content */
+        }
+        .navbar-toggler {
+            order: -1; /* Move the toggler to the left end */
+        }
+        .navbar-buttons {
+            display: flex;
+            gap: 10px; /* Adjust the gap between buttons */
+        }
+        /* Custom CSS for hover dropdown */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .navbar-buttons .nav-link {
+            color: #ffffff; /* White text color for buttons */
+            transition: color 0.3s ease; /* Transition for color change */
+        }
+        .navbar-buttons .nav-link:hover {
+            color: #007437; /* Color change on hover for buttons */
+        }
+        .navbar-buttons .nav-link:active,
+        .navbar-buttons .nav-link:focus {
+            color: #005026; /* Color change on click for buttons */
+        }
+
+        .dashboard-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .menu {
+            background-color: var(--theme-color); /* Use the theme color for the menu background */
+            flex: 1;
+            padding: 20px;
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu li {
+            margin-bottom: 10px;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .content {
+            flex: 3;
+            padding: 20px;
+        }
+
+        .trending {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        .trending h3 {
+            color: var(--theme-color); /* Use the theme color for the heading text color */
+        }
+
+        .trending ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .trending li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<%- include('shared/navbar'); -%>
+<div class="dashboard-container">
+    <div class="menu">
+        <ul>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Top Posts</a></li>
+
+        </ul>
+    </div>
+    <div class="content">
+        <div class="post-container" id="infinite-scroll">
+            <% posts.forEach(post => { %>
+                <li>
+                    <h2 id="title"><%= post.title %></h2>
+<!--                    <p>document.getElementById('title')-->
+<!--                                .insertAdjacentHTML('afterend', post.content) </p>-->
+                    <p><%= post.content %></p>
+                    <img src="/uploads/<%= post.image %>" alt="Post Image" width="300">
+                </li>
+            <% }); %>
+        </div>
+    </div>
+    <div class="trending">
+        <h3>Trending Hashtags</h3>
+        <ul>
+            <li><a href="#">#Hashtag1</a></li>
+            <li><a href="#">#Hashtag2</a></li>
+        </ul>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
