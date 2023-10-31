@@ -6,7 +6,6 @@ const { check, validationResult } = require('express-validator');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const multer = require('multer');
-const cheerio = require('cheerio');
 
 // Requiring the session package
 const session = require('express-session');
@@ -31,10 +30,13 @@ const User = mongoose.model('User', {
 const Post = mongoose.model('Post', new mongoose.Schema({
     title: String,
     content: String,
-    image: String, // Store the image as a URL
-    // User: User.id
+    image: String,
+    tags: [String],
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 }))
-
 // Configure multer for handling file uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -127,7 +129,7 @@ myApp.get('/dashboard',async (req, res) => {
     if (isLoggedIn) {
         try {
             // Fetch all posts from the database
-            const posts = await Post.find();
+            const posts = await Post.find().populate('user');
             
             // Render an HTML page to display the posts
             res.render('dashboard', { username,posts });
@@ -148,12 +150,13 @@ myApp.get('/userSignup', function (req, res) {
 
 myApp.post('/userSignup', function (req, res) {
     var newUserdata = {
-        name: req.body.username,
+        name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
     };
 
     //validate Username and email before save
+
 
     let newUser = new User(newUserdata);
 
@@ -204,7 +207,8 @@ myApp.post('/createPost', upload.single('image'), async (req, res) => {
             title: req.body.title,
             content: req.body.editorContent,
             image: req.file.filename, // Use the uploaded image's filename
-            // User:
+            user: '6536b5ed943e0a906a1240b2',
+            tags: req.body.tags.split(',').map(tag => tag.trim()).map(tag => `#${tag}`)
         });
 
         // Save the post to the database

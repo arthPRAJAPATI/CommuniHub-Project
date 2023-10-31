@@ -119,10 +119,15 @@
             <% posts.forEach(post => { %>
                 <li>
                     <h2 id="title"><%= post.title %></h2>
-<!--                    <p>document.getElementById('title')-->
-<!--                                .insertAdjacentHTML('afterend', post.content) </p>-->
-                    <p><%= post.content %></p>
+                    <p><%- post.content %></p>
                     <img src="/uploads/<%= post.image %>" alt="Post Image" width="300">
+                    <p>Written by: <%= post.user.name %></p>
+                    <p>Tags:</p>
+                    <ul>
+                        <% post.tags.forEach(function(tag) { %>
+                            <li><%= tag %></li>
+                        <% }); %>
+                    </ul>
                 </li>
             <% }); %>
         </div>
