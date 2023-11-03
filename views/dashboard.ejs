@@ -81,17 +81,45 @@
 
         .content {
             flex: 3;
-            padding: 20px;
+            padding: 40px;
+            border: 5px double goldenrod; 
+            padding-left: 40px;
+            padding-right: 40px;
+            background-color: #ffffff;
+        }
+        .content li{
+            list-style: none;
+        }
+
+        .content img {
+            width: 90%;
+            height: auto;
+            padding-left : 40px;
+        }
+        .content h1{
+            color: #00a855;
+            padding-left: 300px;
+        }
+
+        .content h2 {
+            padding-left: 40px;
+        }
+        .content p {
+            padding-left: 40px;
+        }
+        .content .written p {
+            padding-left: 300px;
+
         }
 
         .trending {
             flex: 1;
-            background-color: #fff;
+            background-color: #00a855;
             padding: 20px;
         }
 
         .trending h3 {
-            color: var(--theme-color); /* Use the theme color for the heading text color */
+            color: whitesmoke; /* Use the theme color for the heading text color */
         }
 
         .trending ul {
@@ -101,6 +129,10 @@
 
         .trending li {
             margin-bottom: 10px;
+        }
+
+        .trending ul li a {
+            color: rgb(9, 9, 54);
         }
     </style>
 </head>
@@ -116,18 +148,28 @@
     </div>
     <div class="content">
         <div class="post-container" id="infinite-scroll">
+            <h1>Posts</h1>
             <% posts.forEach(post => { %>
                 <li>
                     <h2 id="title"><%= post.title %></h2>
                     <p><%- post.content %></p>
                     <img src="/uploads/<%= post.image %>" alt="Post Image" width="300">
-                    <p>Written by: <%= post.user.name %></p>
-                    <p>Tags:</p>
-                    <ul>
+                    <div class ="written">
+                    <% if (post.user && post.user.name) { %>
+                        <p>Written by:& <%= post.user.name %></p>
+                    <% } else { %>
+                        <p>Written by: Anonymous</p>
+                    <% } %>
+                   </div>
+                    
+                    <p>Tags:
+                        <a href="">
+                    
                         <% post.tags.forEach(function(tag) { %>
-                            <li><%= tag %></li>
+                            <%= tag %>
                         <% }); %>
-                    </ul>
+                    </a>
+                </p>
                 </li>
             <% }); %>
         </div>
