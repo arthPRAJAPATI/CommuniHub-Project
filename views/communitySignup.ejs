@@ -94,7 +94,6 @@
     color: #ffffff; /* White text color */
     text-align: center;
     padding: 10px;
-    position: absolute;
     bottom: 0;
     width: 100%;
 }
@@ -110,19 +109,23 @@
                     <form  method="post" action="/communitySignup">
                         <div class="form-group">
                             <label for="communityName">Community Name</label>
-                            <input type="text" class="form-control" id="communityName" placeholder="Enter community name">
+                            <input type="text" class="form-control" id="communityName" name="name" placeholder="Enter community name">
                         </div>
                         <div class="form-group">
                             <label for="location">Location</label>
-                            <input type="text" class="form-control" id="location" placeholder="Enter location">
+                            <input type="text" class="form-control" id="location"  name="location" placeholder="Enter location">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea class="form-control" id="description" rows="4" placeholder="Enter community description"></textarea>
+                            <textarea class="form-control" id="description" rows="4" name="description" placeholder="Enter community description"></textarea>
                         </div>
                          <div class="form-group">
                             <label for="guidelines">Community Guidelines</label>
-                            <textarea class="form-control" id="guidelines" rows="4" readonly>
+                            <textarea class="form-control" id="guidelines" rows="4" name="Guildlines" readonly>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo ac ex auctor ultricies.
                                 Nulla facilisi. Nulla congue purus ut mauris interdum, a varius felis tristique.
                                 Fusce non tortor vitae erat hendrerit luctus in non lectus.
