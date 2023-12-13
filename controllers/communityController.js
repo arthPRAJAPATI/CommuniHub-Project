@@ -1,5 +1,7 @@
+const Community = require('../models/community');
+
 exports.getLoginView = function (req, res) {
-    res.render('communityLogin')
+    res.render('communityLogin', { community : false, user: false, home: true })
 };
 
 exports.postLogin = function (req, res) {
@@ -23,6 +25,6 @@ exports.postLogin = function (req, res) {
 };
 
 exports.getSignupView = function (req, res) {
-    res.render('communitySignup');
+    res.render('communitySignup', { community : false, user: false, home: true });
 };
 

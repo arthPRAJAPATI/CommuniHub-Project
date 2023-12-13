@@ -7,11 +7,11 @@ const Project = mongoose.model('Project', new mongoose.Schema({
     tags: [String],
     Community: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: Community
+        ref: 'Community'
     },
     InvitedUser: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: User
+        ref: 'User'
     }]
 
 }))

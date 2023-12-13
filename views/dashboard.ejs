@@ -82,7 +82,7 @@
         .content {
             flex: 3;
             padding: 40px;
-            border: 5px double goldenrod; 
+
             padding-left: 40px;
             padding-right: 40px;
             background-color: #ffffff;
@@ -134,6 +134,56 @@
         .trending ul li a {
             color: rgb(9, 9, 54);
         }
+        /* Card styles for Posts */
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card-content {
+            margin-bottom: 10px;
+        }
+
+        .card-image {
+            display: block;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .card-written {
+            margin-bottom: 10px;
+        }
+
+        .card-written-to {
+            font-style: italic;
+        }
+
+        .card-tags {
+            margin-top: 10px;
+        }
+
+        .card-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            margin-right: 5px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #333;
+        }
+
     </style>
 </head>
 <body>
@@ -141,8 +191,8 @@
 <div class="dashboard-container">
     <div class="menu">
         <ul>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Top Posts</a></li>
+            <li><a href="/projects">Project</a></li>
+            <li><a href="/dashboard">Top Posts</a></li>
 
         </ul>
     </div>
@@ -150,35 +200,37 @@
         <div class="post-container" id="infinite-scroll">
             <h1>Posts</h1>
             <% posts.forEach(post => { %>
-                <li>
-                    <h2 id="title"><%= post.title %></h2>
-                    <p><%- post.content %></p>
-                    <img src="/uploads/<%= post.image %>" alt="Post Image" width="300">
-                    <div class ="written">
-                    <% if (post.user && post.user.name) { %>
-                        <p>Written by:& <%= post.user.name %></p>
-                    <% } else { %>
-                        <p>Written by: Anonymous</p>
-                    <% } %>
-                   </div>
-                    
-                    <p>Tags:
-                        <a href="">
-                    
-                        <% post.tags.forEach(function(tag) { %>
-                            <%= tag %>
-                        <% }); %>
-                    </a>
-                </p>
-                </li>
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title"><%= post.title %></h2>
+                        <p class="card-content"><%- post.content %></p>
+                        <img class="card-image" src="/uploads/<%= post.image %>" alt="Post Image" width="300">
+                        <div class="card-written">
+                            <% if (post.community && post.community.name) { %>
+                                <p class="card-written-to">Written to: <%= post.community.name %></p>
+                            <% } else { %>
+                                <p class="card-written-to">Written to: Anonymous</p>
+                            <% } %>
+                        </div>
+                        <p class="card-tags">Tags:
+                            <% post.tags.forEach(function(tag) { %>
+                                <span class="card-tag"><%= tag %></span>
+                            <% }); %>
+                        </p>
+                    </div>
+                </div>
             <% }); %>
         </div>
     </div>
+
     <div class="trending">
         <h3>Trending Hashtags</h3>
         <ul>
-            <li><a href="#">#Hashtag1</a></li>
-            <li><a href="#">#Hashtag2</a></li>
+
+            <% tags.forEach(tag => { %>
+                <li><%= tag.name %> - Count: <%= tag.count %></li>
+            <% }); %>
+
         </ul>
     </div>
 </div>

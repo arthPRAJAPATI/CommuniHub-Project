@@ -14,10 +14,13 @@ const router = express.Router();
 
 const Community = require('../models/community')
 const Post = require('../models/post');
-router.get('/createPost', async function (req, res) {
+const {isLoggedIn} = require("../middleware");
+const Tags = require("../models/tag");
+// router.get('/createPost', isLoggedIn, async function (req, res) {
+    router.get('/createPost', async function (req, res) {
     const communityList = await Community.find();
     console.log(communityList);
-    res.render('createPost', { communityList });
+    res.render('createPost', { community : false, user: true, home: false, communityList });
 })
 
 // Define a route to handle form submissions with image upload
@@ -29,7 +32,6 @@ router.post('/createPost', upload.single('image'), async (req, res) => {
             title: req.body.title,
             content: req.body.editorContent,
             image: req.file.filename, // Use the uploaded image's filename
-            user: '6536b5ed943e0a906a1240b2',
             tags: req.body.tags.split(',').map(tag => tag.trim()).map(tag => `#${tag}`),
             community: req.body.community
         });
@@ -37,6 +39,7 @@ router.post('/createPost', upload.single('image'), async (req, res) => {
         console.log(newPost);
         // Save the post to the database
         await newPost.save();
+        await saveTags(newPost.tags);
 
         // Redirect to a success page or perform other actions as needed
         res.redirect('/dashboard');
@@ -46,5 +49,29 @@ router.post('/createPost', upload.single('image'), async (req, res) => {
     }
 });
 
+async function saveTags(tagNames) {
+    try {
+        for (let i = 0; i < tagNames.length; i++) {
+            const tagName = tagNames[i];
+
+            // Check if the tag exists in the database
+            const existingTag = await Tags.findOne({ name: tagName });
+
+            if (existingTag) {
+                // If the tag exists, increment the counter
+                existingTag.count++;
+                await existingTag.findOneAndUpdate();
+            } else {
+                // If the tag does not exist, create a new model and save it to the database
+                const newTag = new Tags({ name: tagName });
+                await newTag.save();
+            }
+        }
+
+
+    } catch (error) {
+
+    }
+}
 
 module.exports = router;

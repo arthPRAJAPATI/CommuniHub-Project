@@ -1,13 +1,17 @@
 const express = require('express');
 const User = require('../models/user');
+const Passport = require('passport');
 const router = express.Router();
 
 
 router.get('/login', function (req, res) {
-    res.render('login')
+    res.render('login', { community : false, user: false, home: true })
 });
 
 router.post('/login', function (req, res) {
+    // const redirectUrl = req.session.returnTo || '/dashboard';
+    // delete req.session.returnTo;
+    // res.redirect(redirectUrl);
     const { username, password } = req.body;
 
     // Authenticate user
@@ -29,7 +33,7 @@ router.post('/login', function (req, res) {
 
 
 router.get('/userSignup', function (req, res) {
-    res.render('userSignup');
+    res.render('userSignup', { community : false, user: false, home: true });
 });
 
 router.post('/userSignup', function (req, res) {
@@ -46,7 +50,7 @@ router.post('/userSignup', function (req, res) {
 
     newUser.save();
     // show sucessful popup or error popup
-    res.render('home');
+    res.render('home', { posts, community : false, user: false, home: true });
 
 });
 

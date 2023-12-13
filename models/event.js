@@ -7,11 +7,11 @@ const Event = mongoose.model('Event', new mongoose.Schema({
     tags: [String],
     Community: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: Community
+        ref: 'Community'
     },
     RegisteredUser: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: User
+        ref: 'User'
     }]
 }))
 

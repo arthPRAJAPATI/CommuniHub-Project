@@ -5,6 +5,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <% if(home) {%>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
@@ -20,7 +21,6 @@
             </div>
             <!-- Signup and Login Buttons -->
             <div class="navbar-buttons">
-                <a href="/createPost" class="nav-link">Create Post</a>
                 <div class="dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" id="signupDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Signup
@@ -40,5 +40,57 @@
                     </div>
                 </div>
             </div>
+
+            <%} else  if(community) {%>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/communityDashboard">Dashboard</a>
+                    </li>
+                        <a href="/createEvent" class="nav-link">Create Event</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/createProject" class="nav-link">Create Project</a>
+                    </li>
+                </ul>
+            </div>
+
+                <a href="/logout" class="nav-link">logout</a>
+
+
+            <%} else if(user) {%>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/createPost" class="nav-link">Create Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/createProject" class="nav-link">Create Project</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="/logout" class="nav-link">logout</a>
+    <%} else if (both) {%>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard">Dashboard</a>
+                        </li>
+                        <a href="/createEvent" class="nav-link">Create Event</a>
+                        </li>
+                <li class="nav-item">
+                    <a href="/createProject" class="nav-link">Create Project</a>
+                </li>
+                </ul>
+        </div>
+        <a href="/logout" class="nav-link">logout</a>
+
+
+            <% } %>
         </div>
     </nav>

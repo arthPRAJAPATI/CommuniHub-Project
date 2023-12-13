@@ -89,9 +89,9 @@
 <body>
 <%- include('shared/navbar'); -%>
 <div class="container">
-    <h2>Create an Event</h2>
+    <h2>Create a Project</h2>
 
-    <form action="/createEvent" method="POST" enctype="multipart/form-data" id="post-form">
+    <form action="/createProject" method="POST" id="post-form">
         <div class="form-group">
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" class="form-control" required>
@@ -115,7 +115,7 @@
             <select class="form-control" name="community" id="community">
                 <% communityList.forEach((val)=>{
                 %>
-                    <option value="<%= val._id%>">
+                    <option value="<%= val._id %>">
                         <%= val.name %>
                     </option>
                 <% }) %>
@@ -127,7 +127,7 @@
             <select class="form-control" name="invitedUser" id="invitedUser">
                 <% userList.forEach((val)=>{
                 %>
-                    <option value="<%= val._id%>">
+                    <option value="<%= val._id %>">
                         <%= val.name %>
                     </option>
                 <% }) %>
@@ -135,10 +135,10 @@
         </div>
 
 
-<div class="form-group">
-    <button type="submit" class="btn btn-success">Create Event</button>
-</div>
-</form>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Create Project</button>
+        </div>
+    </form>
 </div>
 
 <!-- Include Quill JavaScript -->

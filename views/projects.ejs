@@ -183,30 +183,35 @@
     <div class="menu">
         <ul>
             <li><a href="/projects">Project</a></li>
-            <li><a href="/events">Events</a></li>
+            <li><a href="/dashboard">Top Posts</a></li>
 
         </ul>
     </div>
     <div class="content">
         <div class="post-container" id="infinite-scroll">
-            <h1>Events</h1>
-            <% events.forEach(post => { %>
+            <h1>Projects</h1>
+            <% projects.forEach(post => { %>
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title"><%= post.name %></h2>
                         <p class="card-description"><%- post.description %></p>
                         <div class="card-details">
                             <% if (post.Community && post.Community.name) { %>
-                                <p class="card-community">Event for: <%= post.Community.name %></p>
+                                <p class="card-community">Project for: <%= post.Community.name %></p>
                             <% } else { %>
                                 <p class="card-community">Written to: Anonymous</p>
                             <% } %>
-                            <p class="card-tags">Tags:
-                                <% post.tags.forEach(function(tag) { %>
-                                    <span class="card-tag"><%= tag %></span>
+                            <ul class="card-invited-users">
+                                <% post.InvitedUser.forEach(user => { %>
+                                    <li><%= user.name %></li>
                                 <% }); %>
-                            </p>
+                            </ul>
                         </div>
+                        <p class="card-tags">Tags:
+                            <% post.tags.forEach(function(tag) { %>
+                                <span class="card-tag"><%= tag %></span>
+                            <% }); %>
+                        </p>
                     </div>
                 </div>
             <% }); %>
@@ -216,9 +221,11 @@
     <div class="trending">
         <h3>Trending Hashtags</h3>
         <ul>
+
             <% tags.forEach(tag => { %>
                 <li><%= tag.name %> - Count: <%= tag.count %></li>
             <% }); %>
+
         </ul>
     </div>
 </div>
